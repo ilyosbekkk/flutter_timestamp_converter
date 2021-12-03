@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
+
 import 'package:timestamp_converter/timestamp.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter  Pro',
       theme: ThemeData(
         fontFamily: 'Trajan pro',
         primarySwatch: Colors.blue,
