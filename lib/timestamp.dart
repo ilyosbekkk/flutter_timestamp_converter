@@ -38,7 +38,7 @@ class _TimeStampState extends State<TimeStamp> {
       } else
         return "$index";
     });
-    _seconds= List<String>.generate(60, (index) {
+    _seconds = List<String>.generate(60, (index) {
       if (index >= 0 && index <= 9) {
         return "0$index";
       } else
@@ -54,7 +54,7 @@ class _TimeStampState extends State<TimeStamp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: Color.fromRGBO(245, 255, 250, 1.0),
+      backgroundColor: Color.fromRGBO(245, 255, 250, 1.0),
       appBar: AppBar(
         title: Text("EpochConverter"),
       ),
@@ -67,7 +67,9 @@ class _TimeStampState extends State<TimeStamp> {
                 margin: EdgeInsets.only(top: 5.0),
                 child: Text(
                   "Convert  epoch to human-readible date and  vice versa",
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Color.fromRGBO(20, 52, 112, 1)),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(20, 52, 112, 1)),
                 ),
               ),
               SizedBox(height: 10.0),
@@ -79,14 +81,21 @@ class _TimeStampState extends State<TimeStamp> {
                       child: Icon(
                         Icons.info_outline,
                       )),
-                  Flexible(child: _buildText("Supports Unix timestamps in seconds, milliseconds, microseconds and nanoseconds.", Colors.black)),
+                  Flexible(
+                      child: _buildText(
+                          "Supports Unix timestamps in seconds, milliseconds, microseconds and nanoseconds.",
+                          Colors.black)),
                 ],
               ),
               Divider(
                 color: Colors.green,
               ),
-              if (_currentResultState == 1) _buildResultWidget(_localTime, _utcTime, "seconds"),
-              if (_currentResultState == -1) _buildText("Sorry this timestamp is  not valid.Check your timestamp,  strip letters and  punctuation  marks!", Colors.red),
+              if (_currentResultState == 1)
+                _buildResultWidget(_localTime, _utcTime, "seconds"),
+              if (_currentResultState == -1)
+                _buildText(
+                    "Sorry this timestamp is  not valid.Check your timestamp,  strip letters and  punctuation  marks!",
+                    Colors.red),
               _buildHumanReadibleToTimeStamp()
             ],
           ),
@@ -119,7 +128,8 @@ class _TimeStampState extends State<TimeStamp> {
                   height: 35,
                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
                   child: RaisedButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0)),
                       color: Color.fromRGBO(255, 249, 203, 1.0),
                       onPressed: () {
                         _onConvertButtonPressed(_timestampController);
@@ -136,7 +146,8 @@ class _TimeStampState extends State<TimeStamp> {
             height: 35,
             margin: EdgeInsets.only(top: 10.0),
             child: RaisedButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
                 color: Color.fromRGBO(255, 249, 203, 1.0),
                 onPressed: () {
                   setState(() {
@@ -177,7 +188,16 @@ class _TimeStampState extends State<TimeStamp> {
                 Container(
                   margin: EdgeInsets.only(bottom: 5.0),
                   child: RichText(
-                    text: TextSpan(style: TextStyle(color: Colors.black), text: "Assuming that this  timestamp is in ", children: [TextSpan(text: '$type:', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black))]),
+                    text: TextSpan(
+                        style: TextStyle(color: Colors.black),
+                        text: "Assuming that this  timestamp is in ",
+                        children: [
+                          TextSpan(
+                              text: '$type:',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black))
+                        ]),
                   ),
                 ),
               ],
@@ -213,7 +233,6 @@ class _TimeStampState extends State<TimeStamp> {
   Widget _buildHumanReadibleToTimeStamp() {
     final columnCrossAxisAlign = CrossAxisAlignment.center;
     return Container(
-
         child: Column(
       children: [
         Row(
@@ -225,7 +244,8 @@ class _TimeStampState extends State<TimeStamp> {
                 Text("Year"),
                 Container(
                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: DropdownButton<int>(
                       items: _years.map((e) {
                         return DropdownMenuItem<int>(child: Text(e.toString()));
@@ -241,7 +261,8 @@ class _TimeStampState extends State<TimeStamp> {
                 Text("Month"),
                 Container(
                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: DropdownButton<int>(
                       items: _months.map((e) {
                         return DropdownMenuItem<int>(child: Text(e.toString()));
@@ -257,7 +278,8 @@ class _TimeStampState extends State<TimeStamp> {
                 Text("Day"),
                 Container(
                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: DropdownButton<int>(
                       items: _days.map((e) {
                         return DropdownMenuItem<int>(child: Text(e.toString()));
@@ -272,10 +294,12 @@ class _TimeStampState extends State<TimeStamp> {
                 Text("Hr"),
                 Container(
                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: DropdownButton<String>(
                       items: _hours.map((e) {
-                        return DropdownMenuItem<String>(child: Text(e.toString()));
+                        return DropdownMenuItem<String>(
+                            child: Text(e.toString()));
                       }).toList(),
                       onChanged: (_) {}),
                 ),
@@ -288,10 +312,12 @@ class _TimeStampState extends State<TimeStamp> {
                 Text("Min"),
                 Container(
                   margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: DropdownButton<String>(
                       items: _mins.map((e) {
-                        return DropdownMenuItem<String>(child: Text(e.toString()));
+                        return DropdownMenuItem<String>(
+                            child: Text(e.toString()));
                       }).toList(),
                       onChanged: (_) {}),
                 ),
@@ -305,10 +331,12 @@ class _TimeStampState extends State<TimeStamp> {
                   Text("Sec"),
                   Container(
                     margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                    decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
                     child: DropdownButton<String>(
                         items: _mins.map((e) {
-                          return DropdownMenuItem<String>(child: Text(e.toString()));
+                          return DropdownMenuItem<String>(
+                              child: Text(e.toString()));
                         }).toList(),
                         onChanged: (_) {}),
                   ),
@@ -323,16 +351,36 @@ class _TimeStampState extends State<TimeStamp> {
             Container(
                 height: 35,
                 margin: EdgeInsets.only(top: 10.0, right: 5.0, left: 5.0),
-                child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)), color: Color.fromRGBO(255, 249, 203, 1.0), onPressed: () {}, child: Text("Human Date to TimeStamp"))),
-            Container(height: 35, margin: EdgeInsets.only(top: 10.0), child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)), color: Color.fromRGBO(255, 249, 203, 1.0), onPressed: () {}, child: Text("reset"))),
+                child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    color: Color.fromRGBO(255, 249, 203, 1.0),
+                    onPressed: () {},
+                    child: Text("Human Date to TimeStamp"))),
+            Container(
+                height: 35,
+                margin: EdgeInsets.only(top: 10.0),
+                child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    color: Color.fromRGBO(255, 249, 203, 1.0),
+                    onPressed: () {},
+                    child: Text("reset"))),
           ],
         )
       ],
     ));
   }
 
+  Widget _buildContainer() {
+    return Container(
+      child: Text("Hello Wolrd"),
+    );
+  }
+
   void _onConvertButtonPressed(TextEditingController controller) {
-    Pattern pattern = '^(?!(?:^[-+]?[0.]+(?:[Ee]|\$)))(?!(?:^-))(?:(?:[+-]?)(?=[0123456789.])(?:(?:(?:[0123456789]+)(?:(?:[.])(?:[0123456789]*))?|(?:(?:[.])(?:[0123456789]+))))(?:(?:[Ee])(?:(?:[+-]?)(?:[0123456789]+))|))\$';
+    Pattern pattern =
+        '^(?!(?:^[-+]?[0.]+(?:[Ee]|\$)))(?!(?:^-))(?:(?:[+-]?)(?=[0123456789.])(?:(?:(?:[0123456789]+)(?:(?:[.])(?:[0123456789]*))?|(?:(?:[.])(?:[0123456789]+))))(?:(?:[Ee])(?:(?:[+-]?)(?:[0123456789]+))|))\$';
     RegExp regExp = new RegExp(pattern);
     if (controller.text.isEmpty || !regExp.hasMatch(controller.text)) {
       setState(() {
